@@ -17,27 +17,27 @@ from control.matlab import *
 
 def MCC(C):  
     """
-    Crée un modèle espace d'état du moteur à courant continu (MCC).
+    Crée un modèle espace d'état du moteur à courant continu (MCC).
 
-    Paramètres
-    ----------
-    C : list
-        Vecteur de sélection de la sortie (ex: [0,0,1] pour l'angle).
+    Paramètres
+    ----------
+    C : list
+        Vecteur de sélection de la sortie (ex: [0,0,1] pour l'angle).
 
-    Retourne
-    -------
-    sys : StateSpace
-        Représentation espace d'état du MCC.
-    """
+    Retourne
+    -------
+    sys : StateSpace
+        Représentation espace d'état du MCC.
+    """
 
     # param du motor
     # Paramètres physiques du moteur
-    R = 1          # Résistance (Ohm)
-    L = 4e-3       # Inductance (H)
-    Ke = 0.1       # Constante de force contre-électromotrice
-    Km = 0.1       # Constante de couple
-    fv = 3e-3      # Coefficient de frottement visqueux
-    j = 2e-3       # Inertie (kg.m^2)
+    R = 1               # Résistance (Ohm)
+    L = 4e-3            # Inductance (H)
+    Ke = 0.1            # Constante de force contre-électromotrice
+    Km = 0.1            # Constante de couple
+    fv = 3e-3           # Coefficient de frottement visqueux
+    j = 2e-3            # Inertie (kg.m^2)
     # matrices d'eta
     A = [[-R/L,-Ke/L,0],[Km/j,-fv/j,0],[0,1,0]]
     B = [[1/L],[0],[0]]
@@ -52,12 +52,12 @@ def MCC(C):
 
 def dessinePosVelAcc(A,B,C,D):  
     """
-    Affiche les courbes de position, vitesse et accélération d’un système.
+    Affiche les courbes de position, vitesse et accélération d’un système.
 
-    Paramètres
-    ----------
-    A, B, C, D : matrices
-        Matrices de l’espace d’état du système.
+    Paramètres
+    ----------
+    A, B, C, D : matrices
+        Matrices de l’espace d’état du système.
     """
 
     voitP = ss2tf(A,B,C,D)
