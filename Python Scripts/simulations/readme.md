@@ -1,3 +1,4 @@
+![Python](https://img.shields.io/badge/Python-3.13.3-blue?logo=python&logoColor=white)
 # Automation & Robotics Simulations
 
 This repository contains a collection of Python simulations and control implementations for various systems in automation and robotics. It includes nonlinear pendulum control, robotic arm kinematics, mobile robot navigation, DC motor modeling, and observer design.
