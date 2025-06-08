@@ -96,7 +96,7 @@ if __name__ == '__main__':
         Fonction Systeme
     """
     # Question 2
-    sys1 = systeme();
+    sys1 = systeme()
     y1, t1 = step(sys1,linspace(0, 15,1000))
     
     plt.figure()
