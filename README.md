@@ -7,15 +7,15 @@ This repository contains laboratory work, projects, and practical code developed
 The main contents of this repository include:
 
 - **Python Scripts/**
-  - **simulations/**
-    - **pendulum/**: Nonlinear inverted pendulum simulation with observer and state feedback control.
-    - **robotic_arm/**: Two-link robotic arm simulation with inverse kinematics and trajectory tracking.
-    - **mobile_robot/**: Mobile robot pose control using unicycle kinematics and Lyapunov-based controllers.
-    - **dc_motor/**: DC motor (MCC) simulation and positioning control, including both continuous and discrete-time modeling.
-    - **observers/**: Observer synthesis for linear systems.
+  - [`simulations`](Python%20Scripts/simulations)
+    - [`pendulum`](Python%20Scripts/simulations/pendulum): Nonlinear inverted pendulum simulation with observer and state feedback control.
+    - [`robotic_arm`](Python%20Scripts/simulations/robotic_arm): Two-link robotic arm simulation with inverse kinematics and trajectory tracking.
+    - [`mobile_robot`](Python%20Scripts/simulations/mobile_robot): Mobile robot pose control using unicycle kinematics and Lyapunov-based controllers.
+    - [`dc_motor/`](Python%20Scripts/simulations/dc_motor): DC motor (MCC) simulation and positioning control, including both continuous and discrete-time modeling.
+    - [`observers`](Python%20Scripts/simulations/observers): Observer synthesis for linear systems.
     - [`requirements.txt`](Python%20Scripts/simulations/requirements.txt): All dependencies (numpy, scipy, matplotlib, control, sympy) needed to run the simulations.
     - [`readme.md`](Python%20Scripts/simulations/readme.md): Detailed documentation of simulation contents and sample results.
-  - **UARM Swift Pro - Controller/**: Scripts and models for controlling the UARM Swift Pro robotic arm, including forward/inverse kinematics and command scripts to interface with the real robot.
+  - [`UARM Swift Pro - Controller`](Python%20Scripts/UARM%20Swift%20Pro%20-%20Controller): Scripts and models for controlling the UARM Swift Pro robotic arm, including forward/inverse kinematics and command scripts to interface with the real robot.
 
 ## Example Projects
 
