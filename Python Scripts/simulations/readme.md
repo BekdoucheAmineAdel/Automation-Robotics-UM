@@ -2,61 +2,44 @@
 
 This repository contains a collection of Python simulations and control implementations for various systems in automation and robotics. It includes nonlinear pendulum control, robotic arm kinematics, mobile robot navigation, DC motor modeling, and observer design.
 
----
+## Repository Structure
 
-## Project Structure
+- [`pendulum`](pendulum): Nonlinear inverted pendulum simulation with observer and state feedback control.
+- [`robotic_arm`](robotic_arm): Two-link robotic arm simulation with inverse kinematics and trajectory tracking.
+- [`mobile_robot`](mobile_robot): Mobile robot pose control using unicycle kinematics and Lyapunov-based controllers.
+- [`dc_motor`](dc_motor): DC motor (MCC) simulation in both continuous and discrete domains. Positioning control of MCC using pole placement and LQR.
+- [`observers`](observers): Continuous-time observer synthesis for linear systems.
 
-- pendulum/
-  - nonlinear_pendulum_observer_simulation.py: Nonlinear inverted pendulum simulation with observer and state feedback control.
+## Getting Started
 
-- robotic_arm/
-  - two_link_arm_simulation.py: Two-link robotic arm simulation with inverse kinematics and trajectory tracking.
+1. **Prerequisites**
+   - Python 3.x
+   - Libraries listed in `requirements.txt`:
+     - numpy
+     - scipy
+     - matplotlib
+     - control
+     - sympy
 
-- mobile_robot/
-  - robot_pose_control_simulation.py: Mobile robot pose control using unicycle kinematics and Lyapunov-based controllers.
+2. **Usage**
+   - Clone the repository:
+     git clone https://github.com/yourusername/automation-robotics-simulations.git
+   - Navigate to the appropriate folder and run the desired script:
+     python path/to/script.py
 
-- dc_motor/
-  - mcc_continuous_discrete_simulation.py: DC motor (MCC) simulation in both continuous and discrete domains.
-  - mcc_positioning_control_simulation.py: Positioning control of MCC using pole placement and LQR.
+## Projects Overview
 
-- observers/
-  - continuous_observer_synthesis.py: Continuous-time observer synthesis for linear systems.
+Each folder contains Python source files for a specific simulation or control project. Example projects include:
+- **Pendulum Control:** Nonlinear dynamics and observer-based feedback.
+- **Robotic Arm:** Kinematics and trajectory tracking for a two-link manipulator.
+- **Mobile Robot:** Pose control using unicycle model and Lyapunov-based strategies.
+- **DC Motor Control:** Continuous and discrete-time modeling and control of a DC motor.
+- **Observer Design:** Continuous-time observer synthesis for linear systems.
 
----
+## Contributing
 
-## Setup Instructions
+This repository serves as a learning resource. If you have suggestions or improvements, feel free to open an issue or submit a pull request.
 
-Install the required dependencies using:
+## License
 
-pip install -r requirements.txt
-
----
-
-## Usage
-
-Each script is standalone and can be run directly:
-
-python path/to/script.py
-
-For example:
-
-python pendulum/nonlinear_pendulum_observer_simulation.py
-
----
-
-## Features
-
-- State-space modeling and simulation
-- Observer design (Kalman, Luenberger)
-- Pole placement and LQR control
-- Inverse kinematics for robotic arms
-- Path following and pose control for mobile robots
-- Continuous and discrete-time system analysis
-
----
-
-## Author
-
-Bekdouche Amine  
-
----
+Distributed for educational purposes.
