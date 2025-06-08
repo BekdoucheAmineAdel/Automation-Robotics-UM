@@ -88,33 +88,31 @@ xx_hat = np.zeros((5, N))
 #               A ne pas toucher
 ##############################################################################
 def pendule_MNL(u, i):
-    
-    r       = x[0, 0]
-    phi     = x[1, 0]
-    dr      = x[2, 0]
-    dphi    = x[3, 0]
+    r       = x[0, 0].item()
+    phi     = x[1, 0].item()
+    dr      = x[2, 0].item()
+    dphi    = x[3, 0].item()
     
     A1=np.array([[M+m, m*l*cos(phi)], [m*l*cos(phi), J+m*l*l]])
     
-    f1 = -fr*dr + m*l*dphi*dphi*sin(phi) + Kf*u - Ks*np.sign(dr);
-    f2 = m*g*l*sin(phi) - fphi*dphi;
+    f1 = -fr*dr + m*l*dphi*dphi*sin(phi) + Kf*u - Ks*np.sign(dr)
+    f2 = m*g*l*sin(phi) - fphi*dphi
 
     dxx1=np.array([[dr], [dphi]])
     dxx2=np.linalg.inv(A1)@np.array([[f1], [f2]])
     dx=np.block([[dxx1], [dxx2]])
     
-    dxx[0, i+1]=dx[0]
-    dxx[1, i+1]=dx[1]
-    dxx[2, i+1]=dx[2]
-    dxx[3, i+1]=dx[3]
-    
-    x[0, 0] = np.trapz([dxx[0, i], dxx[0, i+1]], dx=Te) + x[0, 0]
-    x[1, 0] = np.trapz([dxx[1, i], dxx[1, i+1]], dx=Te) + x[1, 0]
-    x[2, 0] = np.trapz([dxx[2, i], dxx[2, i+1]], dx=Te) + x[2, 0]
-    x[3, 0] = np.trapz([dxx[3, i], dxx[3, i+1]], dx=Te) + x[3, 0]
+    dxx[0, i+1]=dx[0].item()
+    dxx[1, i+1]=dx[1].item()
+    dxx[2, i+1]=dx[2].item()
+    dxx[3, i+1]=dx[3].item()
+
+    x[0, 0] = np.trapezoid([dxx[0, i].item(), dxx[0, i+1].item()], dx=Te) + x[0, 0].item()
+    x[1, 0] = np.trapezoid([dxx[1, i].item(), dxx[1, i+1].item()], dx=Te) + x[1, 0].item()
+    x[2, 0] = np.trapezoid([dxx[2, i].item(), dxx[2, i+1].item()], dx=Te) + x[2, 0].item()
+    x[3, 0] = np.trapezoid([dxx[3, i].item(), dxx[3, i+1].item()], dx=Te) + x[3, 0].item()
     
     y = C@x
-    
     return y
 
 ##############################################################################
@@ -173,8 +171,8 @@ def ss():
                      [0., m*g*l, 0., -fphi, 0.]])
     A2 = np.linalg.inv(tmp1)@tmp2
     Aa = np.block([[A1],
-                   [A2],
-                   [0., 0., 0., 0., 0.]])
+                    [A2],
+                    [0., 0., 0., 0., 0.]])
     # print("A vaut\n", A)
 
     # définition de la matrice B
@@ -204,10 +202,10 @@ def ss_discret(Te):
 # Question 11
 def simulateur(position, angle, vitesseChariot, color1, color2, color3):
     x0 = vitesseChariot
-    angplus = math.asin(position/l)
-    plt.plot(l*sin(angle+angplus), l*cos(angle+angplus),'o-', color = color2)
+    angplus = math.asin(position[0]/l)
+    plt.plot(l*np.sin(angle+angplus), l*np.cos(angle+angplus),'o-', color = color2)
     plt.plot(x0, 0,'o-', color = color3)
-    x, y = (x0,l*sin(angle+angplus)),(0,l*cos(angle+angplus))
+    x, y = (x0.item(),(l*np.sin(angle+angplus)).item()),(0,(l*np.cos(angle+angplus)).item())
     plt.plot(x,y, color1)
     return None
 # Press the green button in the gutter to run the script.
@@ -277,7 +275,7 @@ if __name__ == '__main__':
     
     # Question 8 : # placement des poles du retour d'état et calcul de K
     print("Question 8 :")
-    Ad, Bd, Cd, Dd, Te = sc.signal.cont2discrete((A, B, C, D), Te, "zoh");
+    Ad, Bd, Cd, Dd, Te = sc.signal.cont2discrete((A, B, C, D), Te, "zoh")
     poles = [-3., -4., -5., -6.]
     discrete_polesK = [math.exp(pole*Te) for pole in poles]
     K = place(Ad, Bd, discrete_polesK)
@@ -286,15 +284,16 @@ if __name__ == '__main__':
     print(K)
     
     # Question 9
-    rd = 0.2
+    rd = 0.3
     Gr = -44.29
     
     plt.figure(0)
     y = pendule_MNL(u, 0)
+    print(y[0]/n1)
     simulateur(y[0]/n1, y[1]/n2, y[2]/n3, 'blue', 'blue','green')
     plt.grid()
+    plt.show()
     for i in range(0, N):
-        
         # Appel du système non linéaire
         y = pendule_MNL(u, i)
 
@@ -302,19 +301,19 @@ if __name__ == '__main__':
         x_hat = observateur((Aad, Bad, Cad, Dad, L), u, y, x_hat)
         
         # Question 9 :  Calcul de la commande
-        u = x_hat[4]/Kf - K@x_hat[:4] + Gr*rd
+        u = x_hat[4].item()/Kf - (K@x_hat[:4]).item() + Gr*rd
         
         ###################################################
         # Sauvegarde des données
-        xx_hat[0, i]=x_hat[0]
-        xx_hat[1, i]=x_hat[1]
-        xx_hat[2, i]=x_hat[2]
-        xx_hat[3, i]=x_hat[3]
-        xx_hat[4, i]=x_hat[4]
+        xx_hat[0, i]=x_hat[0].item()
+        xx_hat[1, i]=x_hat[1].item()
+        xx_hat[2, i]=x_hat[2].item()
+        xx_hat[3, i]=x_hat[3].item()
+        xx_hat[4, i]=x_hat[4].item()
         
-        yy[0, i] = y[0]
-        yy[1, i] = y[1]
-        yy[2, i] = y[2]
+        yy[0, i] = y[0].item()
+        yy[1, i] = y[1].item()
+        yy[2, i] = y[2].item()
         
         t[i]=Te*i
         
@@ -322,6 +321,8 @@ if __name__ == '__main__':
         if i%100 == 0:
             simulateur(y[0]/n1, y[1]/n2, y[2]/n3, 'lightsteelblue', 'red', 'springgreen')
     simulateur(y[0]/n1, y[1]/n2, y[2]/n3, 'midnightblue', 'black', 'darkgreen')
+    plt.title(f"Desired Position (x = {rd})")
+    plt.grid()
     plt.show()
     
     plt.figure(1)    
@@ -331,7 +332,8 @@ if __name__ == '__main__':
     plt.legend(['y1(t)'])
     plt.title('position du chariot')
     plt.grid()
-    
+    plt.show()
+
     plt.figure(2)    
     plt.plot(t, yy[1, :]/n2)
     plt.xlabel('Time (s)')
@@ -339,7 +341,8 @@ if __name__ == '__main__':
     plt.legend(['y2(t)'])
     plt.title('position angulaire du pendule')
     plt.grid()
-    
+    plt.show()
+
     plt.figure(3)    
     plt.plot(t, yy[2, :]/n3)
     plt.xlabel('Time (s)')
@@ -347,7 +350,8 @@ if __name__ == '__main__':
     plt.legend(['y3(t)'])
     plt.title('vitesse de déplacement du chariot')
     plt.grid()
-    
+    plt.show()
+
     # Question 10
     """
     Graphique de position:
@@ -367,5 +371,3 @@ if __name__ == '__main__':
         Ensuite, une régression vers une vitesse positive intervient
         pour ramener le chariot à la position désirée et éviter de la dépasser.
     """
-    
-    
