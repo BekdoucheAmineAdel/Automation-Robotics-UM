@@ -24,7 +24,7 @@ This repository contains a collection of Python simulations and control implemen
 
 2. **Usage**
    - Clone the repository:
-     git clone https://github.com/yourusername/automation-robotics-simulations.git
+     git clone https://github.com/BekdoucheAmineAdel/Automation-Robotics-UM.git
    - Navigate to the appropriate folder and run the desired script:
      python path/to/script.py
 
