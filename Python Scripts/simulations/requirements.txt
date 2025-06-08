@@ -1,5 +1,5 @@
-control
-matplotlib
-numpy
-scipy
-sympy
+control==0.10.1
+matplotlib==3.10.3
+numpy==2.3.0
+scipy==1.15.3
+sympy==1.14.0
