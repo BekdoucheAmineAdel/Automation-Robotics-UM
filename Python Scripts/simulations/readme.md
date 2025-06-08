@@ -31,9 +31,27 @@ This repository contains a collection of Python simulations and control implemen
 ## Projects Overview
 
 Each folder contains Python source files for a specific simulation or control project. Example projects include:
+
+
 - **Pendulum Control:** Nonlinear dynamics and observer-based feedback.
+   - `Pendulum's position over time`
+![Image](https://github.com/user-attachments/assets/6639ccaf-5605-452f-a889-f66c625db0a6)
+   - `Position control of the pendulum`
+![Image](https://github.com/user-attachments/assets/8700d181-3cf4-4fb0-99da-8f414897a7a2)
 - **Robotic Arm:** Kinematics and trajectory tracking for a two-link manipulator.
+   - `Rotation Command`
+![Image](https://github.com/user-attachments/assets/3c60bf50-463c-4653-9db6-f83304c14296)
+   - `Position Control`
+![Image](https://github.com/user-attachments/assets/7cef0caf-31b8-42b3-8dfe-70a7f583d3c2)
 - **Mobile Robot:** Pose control using unicycle model and Lyapunov-based strategies.
+   - `Follow Horizontal Path`
+![Image](https://github.com/user-attachments/assets/1553f1bb-2b2c-4894-85b8-dbfb22b779aa)
+   - `Follow Angled Path`
+![Image](https://github.com/user-attachments/assets/6a93f5e7-094e-4a9e-b483-fdc8ca7b62a9)
+   - `Position Control`
+![Image](https://github.com/user-attachments/assets/da073a14-6f81-4889-930d-6eb579478717)
+   - `Lyapunov Result`
+![Image](https://github.com/user-attachments/assets/25790d9a-8f80-4c8b-a71a-2fcd93fc605a)
 - **DC Motor Control:** Continuous and discrete-time modeling and control of a DC motor.
 - **Observer Design:** Continuous-time observer synthesis for linear systems.
 
