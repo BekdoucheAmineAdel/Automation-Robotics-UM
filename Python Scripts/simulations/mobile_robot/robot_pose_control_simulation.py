@@ -154,7 +154,7 @@ def control2DesiredPosition(n, posX, posY, posXd, posYd, theta):
             x[j], y[j], th[j] = calculateAndDrawRobotPose(j, vel[j], omega[j], x[j-1], y[j-1], th[j-1], 'lightsteelblue')
             # check distance and if its too small stop the loop
             if abs(sqrt((x[j]-x_des)**2+(y[j]-y_des)**2)) <= 0.001:
-                break;
+                break
         #draw final robot pose
         drawRobot(x[j], y[j], th[j], 'midnightblue')
         plt.plot(x_des, y_des, 'ko')
