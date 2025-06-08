@@ -238,7 +238,7 @@ if __name__ == '__main__':
         réponses précédentes (équation récurrente, fonction de transfert)
     """
     
-    # Question 11 : Conversion EE -> TF
+    # Question 11 : Conversion EE -> TF
     tf4_ss = ss2tf(eq_etat_num)
     """
          4.163e-17 z + 1
