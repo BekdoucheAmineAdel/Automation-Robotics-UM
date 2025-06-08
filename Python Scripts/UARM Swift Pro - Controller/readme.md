@@ -2,6 +2,10 @@
 
 This repository contains code and documentation for modeling and controlling a 3-degrees-of-freedom (3DOF) robotic arm using both geometric modeling and real-time control via the uArm Swift Pro API.
 
+## 🎥 Project Demonstration
+
+[![YouTube](https://img.shields.io/badge/Watch%20on-YouTube-red?logo=youtube&style=for-the-badge)](https://www.youtube.com/watch?v=lZgf7AkHVYs)
+
 ## 📄 Files Overview
 
 ### 1. `report.pdf`
