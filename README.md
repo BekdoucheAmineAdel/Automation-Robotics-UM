@@ -1,6 +1,6 @@
 # Automation-Robotics-UM
 
-This repository contains laboratory work, projects, and practical code developed during my studies at the University of Montpellier, with a focus on Automation and Robotics.
+This repository contains laboratory work, projects, and practical code realted to automation and robotics developed during my studies at the University of Montpellier, with a focus on Automation and Robotics.
 
 ## Repository Structure
 
